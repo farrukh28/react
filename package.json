@@ -1,0 +1,19 @@
+{
+  "name": "react-exercise",
+  "version": "1.0.0",
+  "description": "This for node and git learning",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farrukh28/react.git"
+  },
+  "author": "Farrukh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farrukh28/react/issues"
+  },
+  "homepage": "https://github.com/farrukh28/react#readme"
+}
