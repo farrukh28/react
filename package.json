@@ -1,10 +1,12 @@
 {
-  "name": "react-exercise",
+  "name": "react",
   "version": "1.0.0",
   "description": "This for node and git learning",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/farrukh28/react/issues"
   },
-  "homepage": "https://github.com/farrukh28/react#readme"
+  "homepage": "https://github.com/farrukh28/react#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
 }
