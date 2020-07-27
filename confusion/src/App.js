@@ -23,7 +23,7 @@ class App extends Component {
             <NavbarBrand href="#">Farrukh</NavbarBrand>
           </div>
         </Navbar>
-        <Menu dishes={this.state.dishes} /> {/* method to send dishes to component as props */}
+        <Menu dishes={this.state.dishes} /> {/* method to send dishes to Menu-component as props */}
       </div>
     );
   }
