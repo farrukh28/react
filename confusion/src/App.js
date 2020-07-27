@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './components/MenuComponent';
 import './App.css';
-
+import { DISHES } from './shared/dishes'; // Importing shared Dishes file
 
 class App extends Component {
+
+  constructor(props) {
+
+    super(props);
+    this.state = {
+      dishes: DISHES, // Importing DISHES constant and assigning to dishes
+    };
+  };
+
 
   render() {
     return (
@@ -14,7 +23,7 @@ class App extends Component {
             <NavbarBrand href="#">Farrukh</NavbarBrand>
           </div>
         </Navbar>
-        <Menu />
+        <Menu dishes={this.state.dishes} /> {/* method to send dishes to component as props */}
       </div>
     );
   }
