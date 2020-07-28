@@ -4,31 +4,26 @@ import { Card, CardImg, CardText, CardBody, CardTitle, ListGroup, ListGroupItem 
 
 class DishDetail extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            propDish: this.props.dish,
-        };
-    }
 
     renderDish(dish) {
-        return (<div className="col-12 col-md-5 m-1">
-            <Card>
-                <CardImg top width="100%" src={this.state.propDish.image} alt={this.state.propDish.name} />
-                <CardBody>
-                    <CardTitle>{this.state.propDish.name}</CardTitle>
-                    <CardText>{this.state.propDish.description}</CardText>
-                </CardBody>
-            </Card>
-        </div>);
+        return (
+            <div className="col-12 col-md-5 m-1">
+                <Card>
+                    <CardImg top width="100%" src={dish.image} alt={dish.name} />
+                    <CardBody>
+                        <CardTitle>{dish.name}</CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            </div>);
     };
 
     renderComments(dishComments) {
         if (dishComments != null) {
             const comm = dishComments.map((dish) => {
                 return (
-                    <ListGroup>
-                        <ListGroupItem>{dish.comment}<div>{"-- " + dish.author + ", " + dish.date}</div></ListGroupItem>
+                    <ListGroup key={dish.id}>
+                        <ListGroupItem>{dish.comment}<div>{"-- " + dish.author + ", " + new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(dish.date)))}</div></ListGroupItem>
                     </ListGroup>
                 );
             });
@@ -48,12 +43,21 @@ class DishDetail extends Component {
     };
 
     render() {
-        return (
-            <div className="row">
-                {this.renderDish(this.state.propDish)}
-                {this.renderComments(this.state.propDish.comments)}
-            </div>
-        );
+        if (this.props.dish != null) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        {this.renderDish(this.props.dish)}
+                        {this.renderComments(this.props.dish.comments)}
+                    </div>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div></div>
+            );
+        }
     }
 };
 
