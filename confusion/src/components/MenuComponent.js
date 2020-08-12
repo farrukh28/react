@@ -6,7 +6,6 @@ import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 function Menu(props) {  // Functional Component
     // instead of this.state we use this.prop
 
-
     const menu = props.dishes.map((dish) => {
         return (
             <div key={dish.id} className="col-12 col-md-5 m-1">
