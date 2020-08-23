@@ -38,12 +38,20 @@ class Main extends Component {
             );
         };
 
+        const DishWithID = (props) => {
+            return (
+                <DishDetail dish={this.state.dishes.filter((dish) => dish.id === parseInt(props.match.params.dishid, 10))[0]}
+                    comments={this.state.comments.filter((comment) => comment.id === parseInt(props.match.params.dishid, 10))} />
+            );
+        }
+
         return (
             <div>
                 <Header />
                 <Switch> {/*React Router*/}
                     <Route path="/home" component={HomePage} />
                     <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} />} />
+                    <Route path="/menu/:dishid" component={DishWithID} />
                     <Route path="/contactus" component={() => <Contact />} />
                     <Redirect to="/home" />
                 </Switch>

@@ -22,7 +22,7 @@ function RenderCard(props) {
                 <CardImg src={props.item.image} alt={props.item.name} />
                 <CardBody>
                     <CardTitle className="font-weight-bolder">{props.item.name}</CardTitle>
-                    {desig()}
+                    {desig()} {/* Executes function */}
                     <CardText>{props.item.description}</CardText>
 
                 </CardBody>
