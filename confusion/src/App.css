@@ -1,3 +1,8 @@
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
 .row-header{
     margin:0px auto;
     padding:0px auto;
@@ -30,4 +35,22 @@ address{
 
 .navbar-dark {
     background-color: #512DA8;
+}
+
+.link{
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.link:hover{
+    transition: 0.4s;
+    color: red;
+    font-size: 26px;
+}
+
+.page-name{
+    font-weight: bold;
 }

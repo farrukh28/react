@@ -51,7 +51,7 @@ function DishDetail(props) {
                         <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>{props.dish.name}</h3>
+                        <h3 className="page-name">{props.dish.name}</h3>
                         <hr />
                     </div>
                 </div>

@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 
 function Menu(props) {  // Functional Component
-    // instead of this.state we use this.prop
+    // instead of this.state we use props.Variable
 
     const menu = props.dishes.map((dish) => {
         return (
             <div key={dish.id} className="col-12 col-md-5 m-1">
-                <Link to={`/menu/${dish.id}`}>
+                <Link className="link" to={`/menu/${dish.id}`}>  {/* Sending parameters through Route URL */}
                     <Card>
                         <CardImg width="100%" src={dish.image} alt={dish.name} />
                         <CardImgOverlay>
@@ -30,7 +30,7 @@ function Menu(props) {  // Functional Component
                     <BreadcrumbItem active>Menu</BreadcrumbItem>
                 </Breadcrumb>
                 <div className="col-12">
-                    <h3>Menu</h3>
+                    <h3 className="page-name">Menu</h3>
                     <hr />
                 </div>
             </div>
