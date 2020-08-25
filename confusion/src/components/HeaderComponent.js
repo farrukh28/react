@@ -27,14 +27,14 @@ class Header extends Component {
                 <Navbar dark expand="md">
                     <div className="container">
 
-                        <NavbarBrand className="mr-auto" href="#">
+                        <NavbarBrand className="mr-auto" href="/home">
                             <img src="assets/images/logo.png" height="30" width="41" alt="Farrukh Restaurant" />
                         </NavbarBrand>
 
                         <NavbarToggler onClick={this.toggleNav} />
 
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
+                            <Nav className="text-center" navbar>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/home">
                                         <span className="fa fa-home fa-lg"></span> Home
