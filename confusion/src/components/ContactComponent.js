@@ -57,6 +57,7 @@ class Contact extends Component {
     }
 
     validate(firstname, lastname, telnum, email) {
+        // object to store error messages corresponding to each field.
         const errors = {
             firstname: '',
             lastname: '',
@@ -142,7 +143,7 @@ class Contact extends Component {
                         </div>
                         <div className="col-12 col-md-9">
 
-                            {/* FORM */}
+                            {/* --------------FORM--------------- */}
 
                             <Form onSubmit={this.handleSubmit}>
                                 <FormGroup row>
