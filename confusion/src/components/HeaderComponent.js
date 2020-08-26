@@ -75,7 +75,7 @@ class Header extends Component {
                             {/* Toggle Button For Login Modal */}
                             <Nav className="ml-auto justify-content-center justify-content-md-start">
                                 <NavItem>
-                                    <Button outline onClick={this.toggleModal}>
+                                    <Button id="login" outline onClick={this.toggleModal}>
                                         <span className="fa fa-sign-in fa-lg"></span> Login
                                     </Button>
                                 </NavItem>

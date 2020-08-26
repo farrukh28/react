@@ -54,3 +54,12 @@ address{
 .page-name{
     font-weight: bold;
 }
+
+#login{
+    color: white;
+    transition: 0.4s;
+}
+
+#login:hover{
+    background-color: #9575CD;
+}

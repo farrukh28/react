@@ -94,10 +94,10 @@ class Contact extends Component {
     render() {
         // Everytime form is changed, it is re-rendered, so we validate everytime it changes.
         const errors = this.validate(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email);
-        const check = this.state.touched;
+
         return (
             <>
-                {console.log(check)}
+
                 <div className="container">
                     <div className="row">
                         <Breadcrumb>
