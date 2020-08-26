@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 
 
 
-
 class Main extends Component {
 
 
@@ -56,8 +55,8 @@ const mapStateToProps = (state) => {
     return {
         dishes: state.dishes,
         comments: state.comments,
-        promotions: state.promotions,
-        leaders: state.leaders
+        leaders: state.leaders,
+        promotions: state.promotions
     };
 };
 
