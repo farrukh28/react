@@ -131,7 +131,7 @@ class Contact extends Component {
                                     <Label htmlFor="email" md={2}>Email</Label>
                                     <Col md={10}>
                                         <Control.text model=".email" id="email" name="email" placeholder="Email"
-                                            className="form-control" className="form-control" validators={
+                                            className="form-control" validators={
                                                 {
                                                     required, validEmail
                                                 }} />

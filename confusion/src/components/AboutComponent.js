@@ -44,7 +44,7 @@ function About(props) {
                     <BreadcrumbItem active>About Us</BreadcrumbItem>
                 </Breadcrumb>
                 <div className="col-12">
-                    <h3>About Us</h3>
+                    <h3 className="page-name">About Us</h3>
                     <hr />
                 </div>
             </div>

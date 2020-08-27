@@ -63,3 +63,14 @@ address{
 #login:hover{
     background-color: #9575CD;
 }
+
+.submit-btn{
+    background-color: white;
+    color: black;
+    transition: 0.4s;
+}
+
+.submit-btn:hover{
+    background-color: rgb(207, 207, 207);
+    color: black;
+}
