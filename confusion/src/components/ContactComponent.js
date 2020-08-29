@@ -3,12 +3,13 @@ import { Breadcrumb, BreadcrumbItem, Label, Col, Button, Row } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
-
+//------------------------ VALIDATION
 const required = (value) => value && value.length;
 const maxLength = (len) => (value) => !(value) || (value.length <= len);
 const minLength = (len) => (value) => (value) && (value.length >= len);
 const isNumber = (value) => !isNaN(Number(value));
 const validEmail = (value) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
+//------------------------------------
 
 class Contact extends Component {
 

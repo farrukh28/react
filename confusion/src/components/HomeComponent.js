@@ -24,7 +24,6 @@ function RenderCard(props) {
                     <CardTitle className="font-weight-bolder">{props.item.name}</CardTitle>
                     {desig()} {/* Executes function */}
                     <CardText>{props.item.description}</CardText>
-
                 </CardBody>
             </Card>
 

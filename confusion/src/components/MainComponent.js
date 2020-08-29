@@ -8,6 +8,7 @@ import About from './AboutComponent'; // importing about
 import DishDetail from './DishDetailComponent';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { addComment } from '../redux/ActionCreators';
 
 
 
@@ -29,7 +30,8 @@ class Main extends Component {
         const DishWithID = (props) => {
             return (
                 <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(props.match.params.dishid, 10))[0]}
-                    comments={this.props.comments.filter((comment) => comment.dishId === parseInt(props.match.params.dishid, 10))} />
+                    comments={this.props.comments.filter((comment) => comment.dishId === parseInt(props.match.params.dishid, 10))}
+                    addComment={this.props.addComment} />
             );
         }
 
@@ -60,5 +62,13 @@ const mapStateToProps = (state) => {
     };
 };
 
+const mapDispatchToProps = (dispatch) => {
 
-export default withRouter(connect(mapStateToProps)(Main));
+    return ({
+        addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+    });
+};
+
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

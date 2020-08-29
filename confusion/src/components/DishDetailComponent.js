@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, ListGroup, ListGroupItem, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Row, Label, Col, Form, FormGroup, Input } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, ListGroup, ListGroupItem, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Row, Label, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { LocalForm, Control, Errors } from 'react-redux-form';
 
@@ -29,8 +29,8 @@ class CommentForm extends Component {
     };
 
     handleCommentSubmit(values) {
-        alert("Comments are: " + JSON.stringify(values));
         this.toggleModal();
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     };
 
 
@@ -109,7 +109,7 @@ function DishDetail(props) {
             </div>);
     };
 
-    function renderComments(dishComments) {
+    function renderComments(dishComments, addComment, dishId) {
         if (dishComments != null) {
             const comm = dishComments.map((dish) => {
                 return (
@@ -123,7 +123,7 @@ function DishDetail(props) {
                     <h4>Comments</h4>
                     {comm}
                     {/* Comment Form */}
-                    {<CommentForm />}
+                    {<CommentForm dishId={dishId} addComment={addComment} />}
                 </div>
             );
         }
@@ -151,7 +151,7 @@ function DishDetail(props) {
                 </div>
                 <div className="row">
                     {renderDish(props.dish)}
-                    {renderComments(props.comments)}
+                    {renderComments(props.comments, props.addComment, props.dish.id)}
                 </div>
             </div>
         );
