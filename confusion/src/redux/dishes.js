@@ -1,11 +1,11 @@
 import * as ActionTypes from './ActionTypes';
 
 
-
 export const Dishes = (state = { isLoading: true, errMess: null, dishes: [] }, action) => {
 
     switch (action.type) {
-        case ActionTypes.ADD_DISHES: {
+
+        case (ActionTypes.ADD_DISHES): {
             return ({
                 ...state,
                 isLoading: false,
@@ -14,16 +14,16 @@ export const Dishes = (state = { isLoading: true, errMess: null, dishes: [] }, a
             });
         }
 
-        case ActionTypes.DISHES_LOADING: {
+        case (ActionTypes.DISHES_LOADING): {
             return ({
                 ...state,
                 isLoading: true,
-                errMess: null,
+                errMess: false,
                 dishes: []
             });
         }
 
-        case ActionTypes.DISHES_FAILED: {
+        case (ActionTypes.DISHES_FAILED): {
             return ({
                 ...state,
                 isLoading: false,
@@ -31,6 +31,7 @@ export const Dishes = (state = { isLoading: true, errMess: null, dishes: [] }, a
                 dishes: []
             });
         }
+
         default:
             return state;
     }

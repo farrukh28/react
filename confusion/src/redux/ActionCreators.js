@@ -18,33 +18,32 @@ export const addComment = (dishId, rating, author, comment) => {
     });
 };
 
-// Thunk returning a function
+// Thunk Funtion
 export const fetchDishes = () => (dispatch) => {
 
-    dispatch(dishesLoading());
-
+    dispatch(dishLoading()); // loading screen
 
     setTimeout(() => {
-        dispatch(addDishes(DISHES));
+        dispatch(addDishes(DISHES)) // load dishes
     }, 2000);
-};
-
-export const dishesLoading = () => {
-    return ({
-        type: ActionTypes.DISHES_LOADING
-    });
-};
-
-export const dishesFailed = (errmess) => {
-    return ({
-        type: ActionTypes.DISHES_FAILED,
-        payload: errmess,
-    });
 };
 
 export const addDishes = (dishes) => {
     return ({
         type: ActionTypes.ADD_DISHES,
         payload: dishes
+    });
+};
+
+export const dishLoading = () => {
+    return ({
+        type: ActionTypes.DISHES_LOADING,
+    });
+};
+
+export const dishFaliure = (errMess) => {
+    return ({
+        type: ActionTypes.DISHES_FAILED,
+        payload: errMess
     });
 };
