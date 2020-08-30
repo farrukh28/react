@@ -2,17 +2,16 @@ import { COMMENTS } from '../shared/comments';
 import * as ActionTypes from './ActionTypes';
 
 
-
-export const Comments = (state = COMMENTS, action) => {
+export const Comments = (store = COMMENTS, action) => {
 
     switch (action.type) {
-        case ActionTypes.ADD_COMMENT: {
+        case (ActionTypes.ADD_COMMENT): {
             var comment = action.payload;
-            comment.id = state.length;
+            comment.id = store.length;
             comment.date = new Date().toISOString();
-            return state.concat(comment);
+            return store.concat(comment);
         }
         default:
-            return state;
+            return store;
     }
 };
