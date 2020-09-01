@@ -4,17 +4,53 @@ import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
 
-export const addComment = (dishId, rating, author, comment) => {
+export const addComment = (comment) => {
 
     return ({
         type: ActionTypes.ADD_COMMENT,
-        payload: {
-            dishId: dishId,
-            rating: rating,
-            author: author,
-            comment: comment
-        }
+        payload: comment
     });
+};
+
+export const postComment = (dishId, rating, author, comment) => (dispatch) => {
+
+    const newComment = {
+        dishId: dishId,
+        rating: rating,
+        author: author,
+        comment: comment
+    };
+    // id will be automatically created at server side.
+    newComment.date = new Date().toISOString();
+
+    // POST using fetch
+    return fetch(baseUrl + "comments", {
+        method: "POST",
+        body: JSON.stringify(newComment),
+        headers: {
+            'Content-Type': "application/json"
+        },
+        credentials: "same-origin"
+    })
+        .then(response => {
+            // This part is when we hear from server and has a response
+            if (response.ok) { // if response is resolved. if response is 200 ok
+                return response;
+            }
+            else { // if there is an error
+                var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+            // This error part is when we dont hear anything from server.
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(updatedComments => dispatch(addComment(updatedComments)))
+        .catch(error => { console.log("Post Comments: " + error.message) });
 };
 
 
