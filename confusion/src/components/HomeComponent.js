@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 function RenderCard(props) {
 
@@ -28,16 +29,14 @@ function RenderCard(props) {
     else {
         return (
             <>
-
                 <Card>
-                    <CardImg src={props.item.image} alt={props.item.name} />
+                    <CardImg src={baseUrl + props.item.image} alt={props.item.name} />
                     <CardBody>
                         <CardTitle className="font-weight-bolder">{props.item.name}</CardTitle>
                         {desig()} {/* Executes function */}
                         <CardText>{props.item.description}</CardText>
                     </CardBody>
                 </Card>
-
             </>
         );
     }
@@ -57,7 +56,10 @@ function Home(props) {
                         />
                     </div>
                     <div className="col-12 col-md m-1">
-                        <RenderCard item={props.promotion} />
+                        <RenderCard item={props.promotion}
+                            isLoading={props.promosLoading}
+                            errMess={props.promosErrMess}
+                        />
                     </div>
                     <div className="col-12 col-md m-1">
                         <RenderCard item={props.leader} />

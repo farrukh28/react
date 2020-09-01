@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, ListGroup, ListGroupItem, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Row, Label, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { LocalForm, Control, Errors } from 'react-redux-form';
-import { Loading } from './LoadingComponent'
+import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 
 
@@ -101,7 +102,7 @@ function DishDetail(props) {
         return (
             <div className="col-12 col-md-5 m-1">
                 <Card>
-                    <CardImg top width="100%" src={dish.image} alt={dish.name} />
+                    <CardImg top width="100%" src={baseUrl + dish.image} alt={dish.name} />
                     <CardBody>
                         <CardTitle className="font-weight-bold">{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>

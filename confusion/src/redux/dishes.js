@@ -18,7 +18,7 @@ export const Dishes = (state = { isLoading: true, errMess: null, dishes: [] }, a
             return ({
                 ...state,
                 isLoading: true,
-                errMess: false,
+                errMess: null,
                 dishes: []
             });
         }

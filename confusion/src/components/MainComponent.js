@@ -8,7 +8,7 @@ import About from './AboutComponent'; // importing about
 import DishDetail from './DishDetailComponent';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addComment, fetchDishes } from '../redux/ActionCreators';
+import { addComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form'
 
 
@@ -17,6 +17,8 @@ class Main extends Component {
 
     componentDidMount() {
         this.props.fetchDishes();
+        this.props.fetchComments();
+        this.props.fetchPromos();
     };
 
     render() {
@@ -25,10 +27,12 @@ class Main extends Component {
         const HomePage = () => {
             return (
                 <Home dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
-                    promotion={this.props.promotions.filter((promotion) => promotion.featured)[0]}
+                    promotion={this.props.promotions.promotions.filter((promotion) => promotion.featured)[0]}
                     leader={this.props.leaders.filter((leader) => leader.featured)[0]}
                     dishesLoading={this.props.dishes.isLoading}
                     dishesErrMess={this.props.dishes.errMess}
+                    promosLoading={this.props.promotions.isLoading}
+                    promossErrMess={this.props.promotions.errMess}
                 />
             );
         };
@@ -36,10 +40,11 @@ class Main extends Component {
         const DishWithID = (props) => {
             return (
                 <DishDetail dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(props.match.params.dishid, 10))[0]}
-                    comments={this.props.comments.filter((comment) => comment.dishId === parseInt(props.match.params.dishid, 10))}
+                    comments={this.props.comments.comments.filter((comment) => comment.dishId === parseInt(props.match.params.dishid, 10))}
                     addComment={this.props.addComment}
                     isLoading={this.props.dishes.isLoading}
                     ErrMess={this.props.dishes.errMess}
+                    commentsErrMess={this.props.comments.errMess}
                 />
             );
         }
@@ -59,7 +64,6 @@ class Main extends Component {
             </div>
         );
     }
-
 };
 
 const mapStateToProps = (state) => {
@@ -75,7 +79,9 @@ const mapDispatchToProps = (dispatch) => {
     return ({
         addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
         fetchDishes: () => dispatch(fetchDishes()),
-        resetFeedbackForm: () => dispatch(actions.reset('feedback'))
+        resetFeedbackForm: () => dispatch(actions.reset('feedback')),
+        fetchComments: () => dispatch(fetchComments()),
+        fetchPromos: () => dispatch(fetchPromos()),
     });
 };
 

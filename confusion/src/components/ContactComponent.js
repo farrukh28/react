@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Label, Col, Button, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 
 //------------------------ VALIDATIONS
 const required = (value) => value && value.length;
@@ -66,7 +66,7 @@ class Contact extends Component {
                         <div className="col-12 col-sm-11 offset-sm-1">
                             <div className="btn-group" role="group">
                                 <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
-                                <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
+                                <a role="button" className="btn btn-info" href="tel:090078601"><i className="fa fa-skype"></i> Skype</a>
                                 <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
                             </div>
                         </div>
@@ -90,7 +90,7 @@ class Contact extends Component {
                                                 }} />
                                         <Errors className="text-danger" model=".firstname" show="touched"
                                             messages={{
-                                                required: "Required",
+                                                required: "Required. ",
                                                 minLength: "Must be greater than 2 characters",
                                                 maxLength: "Must be 15 characters or less"
                                             }} />
@@ -106,7 +106,7 @@ class Contact extends Component {
                                                 }} />
                                         <Errors className="text-danger" model=".lastname" show="touched"
                                             messages={{
-                                                required: "Required",
+                                                required: "Required. ",
                                                 minLength: "Must be greater than 2 characters",
                                                 maxLength: "Must be 15 characters or less"
                                             }} />
@@ -122,7 +122,7 @@ class Contact extends Component {
                                                 }} />
                                         <Errors className="text-danger" model=".telnum" show="touched"
                                             messages={{
-                                                required: "Required",
+                                                required: "Required. ",
                                                 minLength: "Must be greater than 2 numbers",
                                                 maxLength: "Must be 15 numbers or less",
                                                 isNumber: "Must be a number"
@@ -139,7 +139,7 @@ class Contact extends Component {
                                                 }} />
                                         <Errors className="text-danger" model=".email" show="touched"
                                             messages={{
-                                                required: "Required",
+                                                required: "Required. ",
                                                 validEmail: "Invalid Email address"
                                             }} />
                                     </Col>
@@ -176,11 +176,9 @@ class Contact extends Component {
                         </div>
                     </div>
                 </div>
-
             </>
         );
     };
-
 }
 
 export default Contact;
