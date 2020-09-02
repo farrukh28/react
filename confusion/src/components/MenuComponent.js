@@ -7,21 +7,6 @@ import { baseUrl } from '../shared/baseUrl';
 function Menu(props) {  // Functional Component
     // instead of this.state we use props.Variable
 
-    const menu = props.dishes.dishes.map((dish) => {
-        return (
-            <div key={dish.id} className="col-12 col-md-5 m-1">
-                <Link className="link" to={`/menu/${dish.id}`}>  {/* Sending parameters through Route URL */}
-                    <Card>
-                        <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
-                        <CardImgOverlay>
-                            <CardTitle>{dish.name}</CardTitle>
-                        </CardImgOverlay>
-                    </Card>
-                </Link>
-            </div>
-        );
-    });
-
     if (props.dishes.isLoading) {
         return (
             <div className="container">
@@ -41,6 +26,20 @@ function Menu(props) {  // Functional Component
         );
     }
     else {
+        const menu = props.dishes.dishes.map((dish) => {
+            return (
+                <div key={dish.id} className="col-12 col-md-5 m-1">
+                    <Link className="link" to={`/menu/${dish.id}`}>  {/* Sending parameters through Route URL */}
+                        <Card>
+                            <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+                            <CardImgOverlay>
+                                <CardTitle>{dish.name}</CardTitle>
+                            </CardImgOverlay>
+                        </Card>
+                    </Link>
+                </div>
+            );
+        });
         return (
             <div className="container">
                 <div className="row">

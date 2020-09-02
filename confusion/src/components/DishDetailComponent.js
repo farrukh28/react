@@ -119,19 +119,19 @@ function DishDetail(props) {
         if (dishComments != null) {
             const comm = dishComments.map((dish) => {
                 return (
-                    <Stagger in>
-                        <Fade in>
-                            <ListGroup key={dish.id}>
-                                <ListGroupItem>{dish.comment}<div><span className="font-weight-bold text-success">{"-- " + dish.author}</span> {", " + new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(dish.date)))}</div></ListGroupItem>
-                            </ListGroup>
-                        </Fade>
-                    </Stagger>
+                    <Fade in>
+                        <ListGroup key={dish.id}>
+                            <ListGroupItem>{dish.comment}<div><span className="font-weight-bold text-success">{"-- " + dish.author}</span> {", " + new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(dish.date)))}</div></ListGroupItem>
+                        </ListGroup>
+                    </Fade>
                 );
             });
             return (
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
-                    {comm}
+                    <Stagger in>
+                        {comm}
+                    </Stagger>
                     {/* Comment Form */}
                     {<CommentForm dishId={dishId} postComment={postComment} />}
                 </div>
