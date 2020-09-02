@@ -49,8 +49,8 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
                 throw errmess;
             })
         .then(response => response.json())
-        .then(updatedComments => dispatch(addComment(updatedComments)))
-        .catch(error => { console.log("Post Comments: " + error.message) });
+        .then(updatedComments => dispatch(addComment(updatedComments))) // server will send updated comment that is posted.
+        .catch(error => { console.log("Post Comments: " + error.message) }); // then we will update redux store.
 };
 
 
