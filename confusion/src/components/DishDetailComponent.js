@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import { LocalForm, Control, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
-
+//------------Validations
 const required = (value) => value && value.length;
 const maxLength = (len) => (value) => !(value) || (value.length <= len);
 const minLength = (len) => (value) => (value) && (value.length >= len);
-
+//-----------------------
 
 
 class CommentForm extends Component {
@@ -101,13 +102,15 @@ function DishDetail(props) {
     function renderDish(dish) {
         return (
             <div className="col-12 col-md-5 m-1">
-                <Card>
-                    <CardImg top width="100%" src={baseUrl + dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle className="font-weight-bold">{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
+                <FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translateY(-50%)' }}>
+                    <Card>
+                        <CardImg top width="100%" src={baseUrl + dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle className="font-weight-bold">{dish.name}</CardTitle>
+                            <CardText>{dish.description}</CardText>
+                        </CardBody>
+                    </Card>
+                </FadeTransform>
             </div>);
     };
 
@@ -116,9 +119,13 @@ function DishDetail(props) {
         if (dishComments != null) {
             const comm = dishComments.map((dish) => {
                 return (
-                    <ListGroup key={dish.id}>
-                        <ListGroupItem>{dish.comment}<div><span className="font-weight-bold text-success">{"-- " + dish.author}</span> {", " + new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(dish.date)))}</div></ListGroupItem>
-                    </ListGroup>
+                    <Stagger in>
+                        <Fade in>
+                            <ListGroup key={dish.id}>
+                                <ListGroupItem>{dish.comment}<div><span className="font-weight-bold text-success">{"-- " + dish.author}</span> {", " + new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(dish.date)))}</div></ListGroupItem>
+                            </ListGroup>
+                        </Fade>
+                    </Stagger>
                 );
             });
             return (
